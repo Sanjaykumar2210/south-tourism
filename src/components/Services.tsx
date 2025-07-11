@@ -18,6 +18,10 @@ const Services = () => {
   const [showFleet, setShowFleet] = useState(false);
   const fleetRef = useRef<HTMLDivElement | null>(null);
 
+  // Animation for TVM segment
+  const [showTvm, setShowTvm] = useState(false);
+  const tvmRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     const onScroll = () => {
       const section = document.getElementById('route-segment');
@@ -64,6 +68,26 @@ const Services = () => {
     }
     return () => {
       if (fleetRef.current) observer.unobserve(fleetRef.current);
+    };
+  }, []);
+
+  // Animation for TVM segment
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShowTvm(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    if (tvmRef.current) {
+      observer.observe(tvmRef.current);
+    }
+    return () => {
+      if (tvmRef.current) observer.unobserve(tvmRef.current);
     };
   }, []);
 
@@ -171,6 +195,29 @@ const Services = () => {
         </div>
 
         {/* Our Fleet */}
+        {/* Tiruvannamalai Service Highlight */}
+        <div
+          ref={tvmRef}
+          className={`mb-16 transition-all duration-1000 ${showTvm ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
+          <div className="flex flex-col md:flex-row items-center md:items-center gap-8">
+            {/* Points on the left */}
+            <ul className="bg-white/80 rounded-xl shadow p-6 w-full md:w-1/2 text-gray-800 space-y-3 text-lg">
+              <li>✅ <span className="font-semibold text-orange-600">Exclusive Service from Tiruvannamalai</span> to all over India</li>
+              <li>✅ Local expertise for temple tours, hill treks, and spiritual journeys</li>
+              <li>✅ 24/7 support and reliable vehicles for every trip</li>
+            </ul>
+            {/* Image on the right */}
+            <div className="w-full md:w-1/2 flex justify-end">
+              <img
+                src="/images/TVM.jpg"
+                alt="I Love Tiruvannamalai"
+                className="rounded-2xl shadow-lg object-cover w-full h-64 md:h-72"
+                style={{ maxWidth: '100%' }}
+              />
+            </div>
+          </div>
+        </div>
         <div className="mb-20" ref={fleetRef}>
           <h3 className="text-3xl font-bold text-gray-800 mb-8 text-center">
             Our Fleet

@@ -9,9 +9,11 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-orange-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">S</span>
-              </div>
+            <img
+              src="/images/ST logo.png"
+              alt="South Tourism Logo"
+              className="w-10 h-10 object-contain rounded-lg"
+            />
               <div>
                 <h3 className="text-xl font-bold">South Tourism</h3>
                 <p className="text-sm text-gray-400">Premium Travel Solutions</p>
@@ -75,8 +77,8 @@ const Footer = () => {
                 <Mail className="text-orange-400 mt-1" size={16} />
                 <div>
                   <p className="text-gray-400">Email</p>
-                  <a href="mailto:info@travelpro.com" className="text-white hover:text-orange-400 transition-colors">
-                    info@travelpro.com
+                  <a href="mailto:southtourism3875@gmail.com" className="text-white hover:text-orange-400 transition-colors">
+                    southtourism3875@gmail.com
                   </a>
                 </div>
               </div>
