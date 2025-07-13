@@ -28,9 +28,11 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-orange-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">S</span>
-            </div>
+          <img
+              src="/images/ST logo.png"
+              alt="South Tourism Logo"
+              className="w-10 h-10 object-contain rounded-lg"
+            />
             <div>
               <h1 className={`text-xl font-bold transition-colors ${
                 isScrolled ? 'text-gray-800' : 'text-white'
