@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
             <img
-              src="/images/ST logo.png"
+              src="/images/ST-logo.png"
               alt="South Tourism Logo"
               className="w-10 h-10 object-contain rounded-lg"
             />
