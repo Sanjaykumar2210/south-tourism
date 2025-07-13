@@ -32,6 +32,26 @@ const About = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Slider state
+  const [current, setCurrent] = useState(0);
+
+  // Auto-slide effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent(prev => (prev + 1) % sliderImages.length);
+    }, 3500); // 3.5 seconds per slide
+    return () => clearInterval(interval);
+  }, []);
+
+  const sliderImages = [
+    '/images/force.jpg',
+    '/images/bus1.jpg',
+    '/images/bus2.jpg',
+    '/images/bus3.jpg',
+    '/images/bus4.jpg',
+    '/images/bus6.jpg'
+  ];
+
   return (
     <section id="about" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -110,12 +130,24 @@ const About = () => {
             }`}
             data-animate="image"
           >
-            <div className="rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-500">
-              <img 
-                src="/images/force.jpg" 
-                alt="Travel Team" 
-                className="w-full h-96 object-cover hover:scale-105 transition-transform duration-700"
+            <div className="rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-500 relative">
+              <img
+                src={sliderImages[current]}
+                alt="Travel Team"
+                className="w-full h-96 object-cover transition-all duration-700 ease-in-out"
+                key={sliderImages[current]}
               />
+              {/* Dots navigation */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                {sliderImages.map((_, idx) => (
+                  <button
+                    key={idx}
+                    className={`w-3 h-3 rounded-full ${current === idx ? 'bg-orange-500' : 'bg-gray-300'} transition-colors`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                    onClick={() => setCurrent(idx)}
+                  />
+                ))}
+              </div>
             </div>
             <div className="absolute -bottom-6 -right-6 bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
               <div className="flex items-center space-x-2 mb-2">
