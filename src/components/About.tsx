@@ -112,7 +112,7 @@ const About = () => {
           >
             <div className="rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-500">
               <img 
-                src="public/images/force.jpg" 
+                src="/images/force.jpg" 
                 alt="Travel Team" 
                 className="w-full h-96 object-cover hover:scale-105 transition-transform duration-700"
               />
